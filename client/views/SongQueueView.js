@@ -4,6 +4,7 @@ var SongQueueView = Backbone.View.extend({
   tagName: 'table',
 
   initialize: function() {
+    // TODO: Should there be listeners? It's not rendering, unlike LibraryView.
     this.render();
   },
 

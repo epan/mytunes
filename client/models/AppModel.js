@@ -15,6 +15,8 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('play', function(song) {
       this.set('currentSong', song);
+      // TODO figure out why song is "undefined"
+      console.log('now playing: ', JSON.stringify(this.currentSong));
     }, this);
   }
 
