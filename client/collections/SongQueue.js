@@ -23,6 +23,14 @@ var SongQueue = Backbone.Collection.extend({
     this.on('dequeue', function(model) {
       this.remove(model);
     }, this);
+
+    // Add song if it is queued
+    this.on('enqueue', function(model) {
+      // TODO: Figure out why enqueue is not adding songs
+      // console.log('before add: ', this);
+      this.add(model);
+      // console.log('after add: ', this);
+    }, this);
   },
 
   playFirst: function() {
