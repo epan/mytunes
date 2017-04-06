@@ -18,6 +18,11 @@ var SongQueue = Backbone.Collection.extend({
         this.playFirst();
       }
     }, this);
+
+    // Remove song if it is dequeued
+    this.on('dequeue', function(model) {
+      this.remove(model);
+    }, this);
   },
 
   playFirst: function() {
