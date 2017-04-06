@@ -10,10 +10,17 @@ var SongQueue = Backbone.Collection.extend({
         this.playFirst();
       }
     }, this);
+
+    // Remove song after it finishes playing
+    this.on('ended', function() {
+      this.remove(this.models[0]);
+      if (this.models.length) {
+        this.playFirst();
+      }
+    }, this);
   },
 
   playFirst: function() {
-    console.log('from playFirst: ', this);
     this.models[0].play();
   },
 
