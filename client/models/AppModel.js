@@ -15,8 +15,12 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('play', function(song) {
       this.set('currentSong', song);
-      // TODO figure out why song is "undefined"
-      console.log('now playing: ', JSON.stringify(this.currentSong));
+    }, this);
+
+    // When LibraryEntryView triggers 'enqueue',
+    // add song to songQueue collection
+    params.library.on('enqueue', function(song) {
+      this.set('songQueue', this.get('songQueue').add(song));
     }, this);
   }
 
